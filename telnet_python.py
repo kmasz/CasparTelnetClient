@@ -68,9 +68,6 @@ def main():
     #tn.write('version\r\n'.encode('ascii'))
     #print("wyslane")
 
-    
-
-#    tn_incoming = ""
 #    while tn_incoming != b'\r\n':
 #        tn_incoming = tn.read_until(b"\r\n",0.1)
 #       if tn_incoming == b'':
