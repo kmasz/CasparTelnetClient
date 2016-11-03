@@ -4,6 +4,7 @@
 import telnetlib
 from Caspar_Basic_Commands import CasparBasicCommands
 from Caspar_Basic_Commands import CasparDataCommands
+from Caspar_Basic_Commands import CasparTemplateCommands
 
 HOST = "localhost"
 PORT = "5250"
@@ -59,7 +60,8 @@ def main():
         #print(play1('amb', 1, loop = 'loop').play2())
         #tn_write(tn, CasparBasicCommands('amb', 1, layer=0, loop = 'loop').play())
         #tn_write(tn, CasparBasicCommands('amb', 1, layer=0, framerate = 'seek 25').call())
-        tn_write(tn, CasparDataCommands("test_data1").data_remove())
+        #tn_write(tn, CasparDataCommands("test_data1").data_remove())
+        tn_write(tn, CasparTemplateCommands("caspar_text", 1, 1,1).templateAdd())
         tn_read(tn)
         tn_close(tn)
     else:

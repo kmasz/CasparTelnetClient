@@ -129,6 +129,28 @@ class CasparDataCommands:
         else:
             return "data remove " + self._data_name
 
+class CasparTemplateCommands:
+    def __init__(self, template_name, channel, cg_layer, play_on_load, **kwargs):  #layer, data
+        self._channel = channel
+        self._cg_layer = cg_layer
+        self._template_name = template_name
+        self._play_on_load = play_on_load
+        self._variables = kwargs
+        
+    def get_variable(self, k):
+        if k == 'layer':
+            return self._variables.get(k, None)
+        else:
+            return self._variables.get(k,'')
+    
+    def channel_layer(self):    
+        if self.get_variable("layer") == None:
+            return str(self._channel)
+        else:
+            return str(self._channel)+'-'+str(self.get_variable('layer'))
+                
+    def templateAdd(self):
+        return "cg " + str(self.channel_layer()) + " add " + str(self._cg_layer) + " " + self._template_name + " " + str(self._play_on_load)
 
         
 class Caspar2:
