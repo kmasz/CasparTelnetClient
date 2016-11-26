@@ -1,7 +1,9 @@
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 ###
 #nie ma implementacji komend SWAP,ADD,REMOVE,PRINT,LOG LEVEL,LOG CATEGORY,SET,LOCK,
+# TemplateInvoke nie przetestowany
 ###
 import sys
 
@@ -149,8 +151,55 @@ class CasparTemplateCommands:
         else:
             return str(self._channel)+'-'+str(self.get_variable('layer'))
                 
-    def templateAdd(self):
-        return "cg " + str(self.channel_layer()) + " add " + str(self._cg_layer) + " " + self._template_name + " " + str(self._play_on_load)
+    def templateAdd(self, *argsf):
+        #f0 = ("tekst_gora", "Tomasz Nowak")
+        #f1 = ("tekst_dol", "dyr. IT i techniki TV")
+        _listf = []
+        for _n in argsf:
+            _listf.append(_n)
+        return "cg " + str(self.channel_layer()) + " add " + str(self._cg_layer) + " " + self._template_name + " " + str(self._play_on_load) + " " + str(self.templateData(*_listf))
+    
+    def templateData(self, *args):
+        #_f0 = ("tekst_gora", "Tomasz Nowak")
+        #_f1 = ("tekst_dol", "dyr. IT i techniki TV")
+        #_tempdata = r' "<templateData><componentData id=\"' + _f0[0] + r'\"><data id=\"text\" value=\"' + _f0[1] + r'\"></data> </componentData>' + r'<componentData id=\"' + _f1[0] + r'\"><data id=\"text\" value=\"' + _f1[1] + r'\"></data></componentData>' + r'</templateData>"'
+        _tempdata = r' "<templateData>'
+        for _n in args:
+            _tempdata += r'<componentData id=\"' + _n[0] + r'\"><data id=\"text\" value=\"' + _n[1] + r'\"></data> </componentData>'
+        _tempdata += r'</templateData>"'
+        return _tempdata
+    
+    def templatePlay(self):
+        return "cg " + str(self.channel_layer()) + " play " + str(self._cg_layer)
+        
+    def templateStop(self):
+        return "cg " + str(self.channel_layer()) + " stop " + str(self._cg_layer)
+
+    def templateNext(self):
+        return "cg " + str(self.channel_layer()) + " next " + str(self._cg_layer)
+
+    def templateRemove(self):
+        return "cg " + str(self.channel_layer()) + " remove " + str(self._cg_layer)
+
+    def templateClear(self):
+        return "cg " + str(self.channel_layer()) + " clear "
+    
+    def templateUpdate(self, *argsf):
+        #f0 = ("tekst_gora", "Tomasz Nowak")
+        #f1 = ("tekst_dol", "dyr. IT i techniki TV")
+        _listf = []
+        for _n in argsf:
+            _listf.append(_n)
+        return "cg " + str(self.channel_layer()) + " update " + str(self._cg_layer) + " " + str(self.templateData(*_listf))
+    
+    def templateInvoke(self, _method):
+        #f0 = ("tekst_gora", "Tomasz Nowak")
+        #f1 = ("tekst_dol", "dyr. IT i techniki TV")
+        self.method = _method
+        return "cg " + str(self.channel_layer()) + " update " + str(self._cg_layer) + " " + str(self.method)
+
+    def templateInfo(self):
+        return "cg " + str(self.channel_layer()) + " info " + str(self._cg_layer)
 
         
 class Caspar2:
