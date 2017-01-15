@@ -201,7 +201,46 @@ class CasparTemplateCommands:
     def templateInfo(self):
         return "cg " + str(self.channel_layer()) + " info " + str(self._cg_layer)
 
+
+class CasparMixerCommands:
+    def __init__(self, channel, **kwargs):
+        self._channel = channel
+        self._variables = kwargs
+        self._color = ('none', 'green', 'blue')
         
+    def get_variable(self, k):
+        if k == 'layer':
+            return self._variables.get(k, None)
+        elif k == 'keyer':
+            return ' keyer ' + str(self._variables.get(k, ''))
+        elif k == 'chroma':
+            return ' chroma ' + str(self._variables.get(k, ''))
+        else:
+            return self._variables.get(k,'')
+        
+    def get_string(self, s):
+        if s == 'color' and (self._variables.get(s) in self._color):
+            if self._variables.get("spill") == None:
+                return self._variables.get(s) + ' ' + str(self._variables.get("threshold")) + ' ' + str(self._variables.get("softness"))
+            else:
+                return self._variables.get(s) + ' ' + str(self._variables.get("threshold")) + ' ' + str(self._variables.get("softness")) + ' ' + str(self._variables.get("spill"))
+        else:
+            pass
+            
+            
+    def channel_layer(self):    
+        if self.get_variable("layer") == None:
+            return str(self._channel)
+        else:
+            return str(self._channel)+'-'+str(self.get_variable('layer'))
+        
+    def mixerKeyer(self):
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('keyer'))
+    
+    def mixerChroma(self):
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('chroma')) + str(self.get_string("color"))
+
+#######################################################        
 class Caspar2:
     def __init__(self):
         pass

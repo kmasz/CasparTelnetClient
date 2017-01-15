@@ -5,6 +5,7 @@ import telnetlib
 from Caspar_Basic_Commands import CasparBasicCommands
 from Caspar_Basic_Commands import CasparDataCommands
 from Caspar_Basic_Commands import CasparTemplateCommands
+from Caspar_Basic_Commands import CasparMixerCommands
 
 HOST = "localhost"
 PORT = "5250"
@@ -62,20 +63,24 @@ def main():
         #tn_write(tn, CasparBasicCommands('amb', 1, layer=0, framerate = 'seek 25').call())
         #tn_write(tn, CasparDataCommands("test_data1").data_remove())
         #Trzeba zbudowa� t� list� dynamicznie!!
-        f0 = ("tekst_gora", "Tomasz Nowak")
-        f1 = ("tekst_dol", "dyr. IT i techniki TV")
-        f2 = ("tekst_gora", "33")
-        f3 = ("tekst_dol", "44")
-        list_of_f= [f0, f1]
-        list_of_f2= [f2, f3]
-        tn_write(tn, CasparTemplateCommands("wizytowka_wtk2", 1, 1,0).templateAdd(*list_of_f))
-        tn_read(tn)
-        tn_write(tn, CasparTemplateCommands("wizytowka_wtk2", 1, 1,0).templatePlay())
-        tn_read(tn)
-        tn_write(tn, CasparTemplateCommands("wizytowka_wtk2", 1, 1,0).templateInfo())
+        #f0 = ("tekst_gora", "Tomasz Nowak")
+        #f1 = ("tekst_dol", "dyr. IT i techniki TV")
+        #f2 = ("tekst_gora", "33")
+        #f3 = ("tekst_dol", "44")
+        #ist_of_f= [f0, f1]
+        #list_of_f2= [f2, f3]
+        #tn_write(tn, CasparTemplateCommands("wizytowka_wtk2", 1, 1,0, layer=2).templateAdd(*list_of_f))
+        #tn_read(tn)
+        #tn_write(tn, CasparTemplateCommands("wizytowka_wtk2", 1, 1,0, layer=2).templatePlay())
+        #tn_read(tn)
+        #tn_write(tn, CasparTemplateCommands("wizytowka_wtk2", 1, 1,0, layer=2).templateInfo())
+        #tn_read(tn)
+        #n_close(tn)
+        #print(CasparTemplateCommands("wizytowka_wtk1_cs6", 1, 1,1).templateData())
+        #tn_write(tn, CasparMixerCommands(1,layer=1,keyer=1).mixerKeyer())
+        tn_write(tn, CasparMixerCommands(1, layer=0, color='green', threshold = 0.1, softness = 0.1, spill = 0.1).mixerChroma())
         tn_read(tn)
         tn_close(tn)
-        #print(CasparTemplateCommands("wizytowka_wtk1_cs6", 1, 1,1).templateData())
     else:
         print("blad polacznia")
     #tn = tn_connect()
