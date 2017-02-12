@@ -215,6 +215,10 @@ class CasparMixerCommands:
             return ' keyer ' + str(self._variables.get(k, ''))
         elif k == 'chroma':
             return ' chroma ' + str(self._variables.get(k, ''))
+        elif k== 'blend':
+            return ' blend ' + str(self._variables.get(k,''))
+        elif k== 'opacity':
+            return ' opacity ' + str(self._variables.get(k,''))
         else:
             return self._variables.get(k,'')
         
@@ -240,6 +244,11 @@ class CasparMixerCommands:
     def mixerChroma(self):
         return "mixer " + str(self.channel_layer()) + str(self.get_variable('chroma')) + str(self.get_string("color"))
 
+    def mixerBlend(self):
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('blend'))
+    
+    def mixerOpacity(self):
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('opacity'))# + str(self.get_string("tween")) #### trzba dodać opcje
 #######################################################        
 class Caspar2:
     def __init__(self):

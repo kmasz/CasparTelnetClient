@@ -78,7 +78,9 @@ def main():
         #n_close(tn)
         #print(CasparTemplateCommands("wizytowka_wtk1_cs6", 1, 1,1).templateData())
         #tn_write(tn, CasparMixerCommands(1,layer=1,keyer=1).mixerKeyer())
-        tn_write(tn, CasparMixerCommands(1, layer=0, color='green', threshold = 0.1, softness = 0.1, spill = 0.1).mixerChroma())
+        #tn_write(tn, CasparMixerCommands(1, layer=0, color='green', threshold = 0.1, softness = 0.1, spill = 0.1).mixerChroma())
+        #tn_write(tn, CasparMixerCommands(1, layer=1,blend='screen').mixerBlend())
+        tn_write(tn, CasparMixerCommands(1,layer=0).mixerOpacity())
         tn_read(tn)
         tn_close(tn)
     else:
