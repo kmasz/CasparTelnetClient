@@ -219,6 +219,16 @@ class CasparMixerCommands:
             return ' blend ' + str(self._variables.get(k,''))
         elif k== 'opacity':
             return ' opacity ' + str(self._variables.get(k,''))
+        elif k == 'duration':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'brightness':
+            return ' brightness ' + str(self._variables.get(k,''))
+        elif k == 'saturation':
+            return ' saturation ' + str(self._variables.get(k,''))
+        elif k == 'contrast':
+            return ' contrast ' + str(self._variables.get(k,''))
+        elif k == 'levels':
+            return ' levels ' + str(self._variables.get(k,''))
         else:
             return self._variables.get(k,'')
         
@@ -228,6 +238,8 @@ class CasparMixerCommands:
                 return self._variables.get(s) + ' ' + str(self._variables.get("threshold")) + ' ' + str(self._variables.get("softness"))
             else:
                 return self._variables.get(s) + ' ' + str(self._variables.get("threshold")) + ' ' + str(self._variables.get("softness")) + ' ' + str(self._variables.get("spill"))
+        #elif s == 'tween':
+        #    return self.get_variable(s) + ' '
         else:
             pass
             
@@ -242,13 +254,25 @@ class CasparMixerCommands:
         return "mixer " + str(self.channel_layer()) + str(self.get_variable('keyer'))
     
     def mixerChroma(self):
-        return "mixer " + str(self.channel_layer()) + str(self.get_variable('chroma')) + str(self.get_string("color"))
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('chroma')) + str(self.get_string("color")) #brak tweena!
 
     def mixerBlend(self):
         return "mixer " + str(self.channel_layer()) + str(self.get_variable('blend'))
     
     def mixerOpacity(self):
-        return "mixer " + str(self.channel_layer()) + str(self.get_variable('opacity'))# + str(self.get_string("tween")) #### trzba dodać opcje
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('opacity')) + str(self.get_variable('duration'))#brak tweena!
+    
+    def mixerBrightness(self):
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('brightness')) + str(self.get_variable('duration'))#brak tweena!
+    
+    def mixerSaturation(self):
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('saturation')) + str(self.get_variable('duration'))#brak tweena!
+    
+    def mixerContrast(self):
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('contrast')) + str(self.get_variable('duration'))#brak tweena!
+    
+    def mixerLevels(self):
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('levels'))##brak parametrów #brak tweena!
 #######################################################        
 class Caspar2:
     def __init__(self):

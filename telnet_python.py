@@ -80,7 +80,12 @@ def main():
         #tn_write(tn, CasparMixerCommands(1,layer=1,keyer=1).mixerKeyer())
         #tn_write(tn, CasparMixerCommands(1, layer=0, color='green', threshold = 0.1, softness = 0.1, spill = 0.1).mixerChroma())
         #tn_write(tn, CasparMixerCommands(1, layer=1,blend='screen').mixerBlend())
-        tn_write(tn, CasparMixerCommands(1,layer=0).mixerOpacity())
+        #tn_write(tn, CasparMixerCommands(1,layer=0, opacity = 1, duration =50).mixerOpacity())
+        #tn_write(tn, CasparMixerCommands(1,layer=0, brightness = 1, duration = 50).mixerBrightness())
+        #tn_write(tn, CasparMixerCommands(1,layer=0, saturation = 1, duration = 24).mixerSaturation())
+        #tn_write(tn, CasparMixerCommands(1,layer=0, contrast = 1, duration = 24).mixerContrast())
+        tn_write(tn, CasparMixerCommands(1,layer=0).mixerLevels())
+        #print(CasparMixerCommands(1,layer=0, opacity = 1, duration =25).mixerOpacity())
         tn_read(tn)
         tn_close(tn)
     else:
