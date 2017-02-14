@@ -229,6 +229,32 @@ class CasparMixerCommands:
             return ' contrast ' + str(self._variables.get(k,''))
         elif k == 'levels':
             return ' levels ' + str(self._variables.get(k,''))
+        elif k == 'min_input':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'max_input':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'gamma':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'min_output':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'max_output':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'fill':
+            return ' fill ' + str(self._variables.get(k,''))
+        elif k == 'x':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'y':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'x_scale':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'y_scale':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'clip':
+            return ' clip ' + str(self._variables.get(k,''))
+        elif k == 'width':
+            return ' ' +str(self._variables.get(k,''))
+        elif k == 'height':
+            return ' ' +str(self._variables.get(k,''))
         else:
             return self._variables.get(k,'')
         
@@ -272,7 +298,13 @@ class CasparMixerCommands:
         return "mixer " + str(self.channel_layer()) + str(self.get_variable('contrast')) + str(self.get_variable('duration'))#brak tweena!
     
     def mixerLevels(self):
-        return "mixer " + str(self.channel_layer()) + str(self.get_variable('levels'))##brak parametrów #brak tweena!
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('levels')) + str(self.get_variable('min_input')) + str(self.get_variable('max_input')) + str(self.get_variable('gamma')) + str(self.get_variable('min_output')) + str(self.get_variable('max_output')) + str(self.get_variable('duration'))#brak tweena!
+    
+    def mixerFill(self):
+        return "mixer " +str(self.channel_layer()) + str(self.get_variable('fill')) + str(self.get_variable('x')) + str(self.get_variable('y')) + str(self.get_variable('x_scale')) + str(self.get_variable('y_scale')) + str(self.get_variable('duration'))#brak tweena!
+    
+    def mixerClip(self):
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('clip')) + str(self.get_variable('x')) + str(self.get_variable('y')) + str(self.get_variable('width')) + str(self.get_variable('height')) + str(self.get_variable('duration'))#brak tweena!
 #######################################################        
 class Caspar2:
     def __init__(self):
