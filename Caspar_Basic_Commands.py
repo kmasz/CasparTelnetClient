@@ -6,6 +6,7 @@
 # TemplateInvoke nie przetestowany
 ###
 import sys
+from _ast import Str
 
 class CasparBasicCommands_old:
     def __init__(self):
@@ -255,6 +256,40 @@ class CasparMixerCommands:
             return ' ' +str(self._variables.get(k,''))
         elif k == 'height':
             return ' ' +str(self._variables.get(k,''))
+        elif k == 'anchor':
+            return ' anchor ' + str(self._variables.get(k,''))
+        elif k == 'crop':
+            return ' crop ' + str(self._variables.get(k,''))
+        elif k == 'left_edge':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'right_edge':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'top_edge':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'bottom_edge':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'rotation':
+            return ' rotation ' + str(self._variables.get(k,''))
+        elif k == 'angle':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'perspective':
+            return ' perspective ' + str(self._variables.get(k,''))
+        elif k == 'top_left_x':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'top_left_y':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'top_right_x':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'top_right_y':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'bottom_left_x':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'bottom_left_y':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'bottom_right_x':
+            return ' ' + str(self._variables.get(k,''))
+        elif k == 'bottom_right_y':
+            return ' ' + str(self._variables.get(k,''))
         else:
             return self._variables.get(k,'')
         
@@ -305,6 +340,18 @@ class CasparMixerCommands:
     
     def mixerClip(self):
         return "mixer " + str(self.channel_layer()) + str(self.get_variable('clip')) + str(self.get_variable('x')) + str(self.get_variable('y')) + str(self.get_variable('width')) + str(self.get_variable('height')) + str(self.get_variable('duration'))#brak tweena!
+    
+    def mixerAnchor(self):
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('anchor')) + str(self.get_variable('x')) + str(self.get_variable('y')) + str(self.get_variable('duration')) #brak tweena!
+    
+    def mixerCrop(self):
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('crop')) + str(self.get_variable('left_edge')) + str(self.get_variable('top_edge')) + str(self.get_variable('right_edge')) + str(self.get_variable('bottom_edge')) + str(self.get_variable('duration')) #brak tweena!
+    
+    def mixerRotation(self):
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('rotation')) + str(self.get_variable('angle')) + str(self.get_variable('duration')) #brak tweena!
+    
+    def mixerPerspective(self):
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('perspective'))  + str(self.get_variable('top_left_x')) + str(self.get_variable('top_left_y')) + str(self.get_variable('top_right_x')) + str(self.get_variable('top_right_y')) + str(self.get_variable('bottom_right_x')) + str(self.get_variable('bottom_right_y')) + str(self.get_variable('bottom_left_x')) + str(self.get_variable('bottom_left_y')) + str(self.get_variable('duration')) #brak tweena!
 #######################################################        
 class Caspar2:
     def __init__(self):
