@@ -290,6 +290,16 @@ class CasparMixerCommands:
             return ' ' + str(self._variables.get(k,''))
         elif k == 'bottom_right_y':
             return ' ' + str(self._variables.get(k,''))
+        elif k == 'mipmap':
+            return ' mipmap ' +str(self._variables.get(k,''))
+        elif k == 'volume':
+            return ' volume ' + str(self._variables.get(k,''))
+        elif k == 'mastervolume':
+            return ' mastervolume ' + str(self._variables.get(k,''))
+        elif k == 'straightalphaoutput':
+            return ' straight_alpha_output ' + str(self._variables.get(k,''))
+        elif k == 'grid':
+            return ' grid ' + str(self._variables.get(k,''))
         else:
             return self._variables.get(k,'')
         
@@ -312,46 +322,70 @@ class CasparMixerCommands:
             return str(self._channel)+'-'+str(self.get_variable('layer'))
         
     def mixerKeyer(self):
-        return "mixer " + str(self.channel_layer()) + str(self.get_variable('keyer'))
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('keyer')) #brak DEFER!!
     
     def mixerChroma(self):
-        return "mixer " + str(self.channel_layer()) + str(self.get_variable('chroma')) + str(self.get_string("color")) #brak tweena!
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('chroma')) + str(self.get_string("color")) #brak tweena! #brak DEFER!!
 
     def mixerBlend(self):
-        return "mixer " + str(self.channel_layer()) + str(self.get_variable('blend'))
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('blend')) #brak DEFER!!
     
     def mixerOpacity(self):
-        return "mixer " + str(self.channel_layer()) + str(self.get_variable('opacity')) + str(self.get_variable('duration'))#brak tweena!
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('opacity')) + str(self.get_variable('duration'))#brak tweena! #brak DEFER!!
     
     def mixerBrightness(self):
-        return "mixer " + str(self.channel_layer()) + str(self.get_variable('brightness')) + str(self.get_variable('duration'))#brak tweena!
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('brightness')) + str(self.get_variable('duration'))#brak tweena! #brak DEFER!!
     
     def mixerSaturation(self):
-        return "mixer " + str(self.channel_layer()) + str(self.get_variable('saturation')) + str(self.get_variable('duration'))#brak tweena!
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('saturation')) + str(self.get_variable('duration'))#brak tweena! #brak DEFER!!
     
     def mixerContrast(self):
-        return "mixer " + str(self.channel_layer()) + str(self.get_variable('contrast')) + str(self.get_variable('duration'))#brak tweena!
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('contrast')) + str(self.get_variable('duration'))#brak tweena! #brak DEFER!!
     
     def mixerLevels(self):
-        return "mixer " + str(self.channel_layer()) + str(self.get_variable('levels')) + str(self.get_variable('min_input')) + str(self.get_variable('max_input')) + str(self.get_variable('gamma')) + str(self.get_variable('min_output')) + str(self.get_variable('max_output')) + str(self.get_variable('duration'))#brak tweena!
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('levels')) + str(self.get_variable('min_input')) + str(self.get_variable('max_input')) + str(self.get_variable('gamma')) + str(self.get_variable('min_output')) + str(self.get_variable('max_output')) + str(self.get_variable('duration'))#brak tweena! #brak DEFER!!
     
     def mixerFill(self):
-        return "mixer " +str(self.channel_layer()) + str(self.get_variable('fill')) + str(self.get_variable('x')) + str(self.get_variable('y')) + str(self.get_variable('x_scale')) + str(self.get_variable('y_scale')) + str(self.get_variable('duration'))#brak tweena!
+        return "mixer " +str(self.channel_layer()) + str(self.get_variable('fill')) + str(self.get_variable('x')) + str(self.get_variable('y')) + str(self.get_variable('x_scale')) + str(self.get_variable('y_scale')) + str(self.get_variable('duration'))#brak tweena! #brak DEFER!!
     
     def mixerClip(self):
-        return "mixer " + str(self.channel_layer()) + str(self.get_variable('clip')) + str(self.get_variable('x')) + str(self.get_variable('y')) + str(self.get_variable('width')) + str(self.get_variable('height')) + str(self.get_variable('duration'))#brak tweena!
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('clip')) + str(self.get_variable('x')) + str(self.get_variable('y')) + str(self.get_variable('width')) + str(self.get_variable('height')) + str(self.get_variable('duration'))#brak tweena! #brak DEFER!!
     
     def mixerAnchor(self):
-        return "mixer " + str(self.channel_layer()) + str(self.get_variable('anchor')) + str(self.get_variable('x')) + str(self.get_variable('y')) + str(self.get_variable('duration')) #brak tweena!
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('anchor')) + str(self.get_variable('x')) + str(self.get_variable('y')) + str(self.get_variable('duration')) #brak tweena! #brak DEFER!!
     
     def mixerCrop(self):
-        return "mixer " + str(self.channel_layer()) + str(self.get_variable('crop')) + str(self.get_variable('left_edge')) + str(self.get_variable('top_edge')) + str(self.get_variable('right_edge')) + str(self.get_variable('bottom_edge')) + str(self.get_variable('duration')) #brak tweena!
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('crop')) + str(self.get_variable('left_edge')) + str(self.get_variable('top_edge')) + str(self.get_variable('right_edge')) + str(self.get_variable('bottom_edge')) + str(self.get_variable('duration')) #brak tweena! #brak DEFER!!
     
     def mixerRotation(self):
-        return "mixer " + str(self.channel_layer()) + str(self.get_variable('rotation')) + str(self.get_variable('angle')) + str(self.get_variable('duration')) #brak tweena!
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('rotation')) + str(self.get_variable('angle')) + str(self.get_variable('duration')) #brak tweena! #brak DEFER!!
     
     def mixerPerspective(self):
-        return "mixer " + str(self.channel_layer()) + str(self.get_variable('perspective'))  + str(self.get_variable('top_left_x')) + str(self.get_variable('top_left_y')) + str(self.get_variable('top_right_x')) + str(self.get_variable('top_right_y')) + str(self.get_variable('bottom_right_x')) + str(self.get_variable('bottom_right_y')) + str(self.get_variable('bottom_left_x')) + str(self.get_variable('bottom_left_y')) + str(self.get_variable('duration')) #brak tweena!
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('perspective'))  + str(self.get_variable('top_left_x')) + str(self.get_variable('top_left_y')) + str(self.get_variable('top_right_x')) + str(self.get_variable('top_right_y')) + str(self.get_variable('bottom_right_x')) + str(self.get_variable('bottom_right_y')) + str(self.get_variable('bottom_left_x')) + str(self.get_variable('bottom_left_y')) + str(self.get_variable('duration')) #brak tweena! #brak DEFER!!
+    
+    def mixerMipmap(self):
+        return "mixer " +str(self.channel_layer()) + str(self.get_variable('mipmap'))#brak DEFER!!
+    
+    def mixerVolume(self):
+        return "mixer "+ str(self.channel_layer()) + str(self.get_variable('volume'))  + str(self.get_variable('duration'))#brak tweena! #brak DEFER!!
+    
+    def mixerMastervolume(self):
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('mastervolume'))#brak DEFER!!
+    
+    def mixerStraightalphaoutput(self):
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('straightalphaoutput'))#brak DEFER!!
+    
+    def mixerGrid(self):
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('grid')) + str(self.get_variable('duration')) #brak tweena! #brak DEFER!!
+    
+    def mixerCommit(self):
+        return "mixer " + str(self.channel_layer()) + ' commit'
+    
+    def mixerClear(self):
+        return "mixer " + str(self.channel_layer()) + ' clear'
+    
+    def mixerChannelgrid(self):
+        return "channel_grid"
 #######################################################        
 class Caspar2:
     def __init__(self):
