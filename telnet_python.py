@@ -6,6 +6,7 @@ from Caspar_Basic_Commands import CasparBasicCommands
 from Caspar_Basic_Commands import CasparDataCommands
 from Caspar_Basic_Commands import CasparTemplateCommands
 from Caspar_Basic_Commands import CasparMixerCommands
+from Caspar_Basic_Commands import CasparThumbnailsCommands
 
 HOST = "localhost"
 PORT = "5250"
@@ -99,7 +100,11 @@ def main():
         #tn_write(tn, CasparMixerCommands(1,layer=0,grid=2).mixerGrid())
         #tn_write(tn, CasparMixerCommands(1,layer=0).mixerCommit())
         #tn_write(tn, CasparMixerCommands(1,layer=4).mixerClear())
-        tn_write(tn, CasparMixerCommands(1).mixerChannelgrid())
+        #tn_write(tn, CasparMixerCommands(1).mixerChannelgrid())
+        #tn_write(tn, CasparThumbnailsCommands('TRAFFIC_DATA').thumbnail_list())
+        #tn_write(tn, CasparThumbnailsCommands('amb').thumbnail_retrieve())
+        #tn_write(tn, CasparThumbnailsCommands('amb').thumbnail_generate())
+        tn_write(tn, CasparThumbnailsCommands().thumbnail_generate_all())
         tn_read(tn)
         tn_close(tn)
     else:

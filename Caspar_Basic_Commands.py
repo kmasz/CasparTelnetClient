@@ -386,6 +386,28 @@ class CasparMixerCommands:
     
     def mixerChannelgrid(self):
         return "channel_grid"
+    
+class CasparThumbnailsCommands:
+    def __init__(self,string_name = None):
+        self._string_name = string_name
+        
+    def optional_arg(self):
+        if self._string_name == None:
+            return ""
+        else:
+            return self._string_name
+        
+    def thumbnail_list(self):
+        return "thumbnail list " + str(self.optional_arg())
+    
+    def thumbnail_retrieve(self):
+        return "thumbnail retrieve " + str(self.optional_arg())
+    
+    def thumbnail_generate(self):
+        return "thumbnail generate " + str(self.optional_arg())
+    
+    def thumbnail_generate_all(self):
+        return "thumbnail generate_all"
 #######################################################        
 class Caspar2:
     def __init__(self):
