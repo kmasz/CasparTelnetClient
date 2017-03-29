@@ -408,6 +408,56 @@ class CasparThumbnailsCommands:
     
     def thumbnail_generate_all(self):
         return "thumbnail generate_all"
+    
+class CasparQueryCommands:
+    def __init__(self,string_name = None):
+        self._string_name = string_name
+        
+    def optional_arg(self):
+        if self._string_name == None:
+            return ""
+        else:
+            return self._string_name
+    
+    def cinf(self):
+        return "cinf " + str(self.optional_arg())
+    
+    def cls(self):
+        return "cls " + str(self.optional_arg())
+    
+    def fls(self):
+        return "fls"
+    
+    def tls(self):
+        return "tls " + str(self.optional_arg())
+    
+    def version(self):
+        return "version " + str(self.optional_arg())
+    
+    def info(self):
+        return "info " + str(self.optional_arg())
+    
+    def diag(self):
+        return "diag"
+    
+    def gl_info(self):
+        return "gl info"
+    
+    def gl_gc(self):
+        return "gl gc"
+    
+    def bye(self):
+        return "bye"
+    
+    def kill(self):
+        return "kill"
+    
+    def restart(self):
+        return "restart"
+    
+    def help(self):
+        return "help " + str(self.optional_arg())
+        
 #######################################################        
 class Caspar2:
     def __init__(self):

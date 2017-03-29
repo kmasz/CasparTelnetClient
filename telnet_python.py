@@ -7,6 +7,7 @@ from Caspar_Basic_Commands import CasparDataCommands
 from Caspar_Basic_Commands import CasparTemplateCommands
 from Caspar_Basic_Commands import CasparMixerCommands
 from Caspar_Basic_Commands import CasparThumbnailsCommands
+from Caspar_Basic_Commands import CasparQueryCommands
 
 HOST = "localhost"
 PORT = "5250"
@@ -104,7 +105,20 @@ def main():
         #tn_write(tn, CasparThumbnailsCommands('TRAFFIC_DATA').thumbnail_list())
         #tn_write(tn, CasparThumbnailsCommands('amb').thumbnail_retrieve())
         #tn_write(tn, CasparThumbnailsCommands('amb').thumbnail_generate())
-        tn_write(tn, CasparThumbnailsCommands().thumbnail_generate_all())
+        #tn_write(tn, CasparThumbnailsCommands().thumbnail_generate_all())
+        #tn_write(tn, CasparQueryCommands('amb').cinf())
+        #tn_write(tn, CasparQueryCommands('TRAFFIC_DATA').cls())
+        #tn_write(tn, CasparQueryCommands().fls())
+        #tn_write(tn, CasparQueryCommands().tls())
+        #tn_write(tn, CasparQueryCommands('server').version())
+        #tn_write(tn, CasparQueryCommands('template zegar').info())
+        #tn_write(tn, CasparQueryCommands().diag())
+        #tn_write(tn, CasparQueryCommands().gl_info())
+        #tn_write(tn, CasparQueryCommands().gl_gc())
+        #tn_write(tn, CasparQueryCommands().bye())
+        #tn_write(tn, CasparQueryCommands().kill())
+        #tn_write(tn, CasparQueryCommands().restart())
+        tn_write(tn, CasparQueryCommands().help())
         tn_read(tn)
         tn_close(tn)
     else:
