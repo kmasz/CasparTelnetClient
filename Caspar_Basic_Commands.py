@@ -6,7 +6,7 @@
 # TemplateInvoke nie przetestowany
 ###
 import sys
-from _ast import Str
+#from _ast import Str
 
 class CasparBasicCommands_old:
     def __init__(self):
@@ -85,7 +85,7 @@ class CasparBasicCommands:
         return 'load ' + self.set_all_commands()
     
     def loadbg(self):
-        return 'loadbg ' + self.set_all_commands()
+        return 'loadbg ' + self.set_all_commands()#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     
     def pause(self):
         return 'pause ' + self.simple_set_commands()
@@ -208,101 +208,16 @@ class CasparMixerCommands:
         self._channel = channel
         self._variables = kwargs
         self._color = ('none', 'green', 'blue')
-        
-    def get_variable(self, k):
+        self._value = ('duration','min_input','max_input','max_output','min_output','gamma','x','y','x_scale','y_scale','width','height','left_edge','right_edge','top_edge','bottom_edge','angle','top_left_x','top_left_y','top_right_x','top_right_y','bottom_right_x','bottom_right_y','bottom_left_x','bottom_left_y')
+    
+    def get_variable(self,k):    
         if k == 'layer':
             return self._variables.get(k, None)
-        elif k == 'keyer':
-            return ' keyer ' + str(self._variables.get(k, ''))
-        elif k == 'chroma':
-            return ' chroma ' + str(self._variables.get(k, ''))
-        elif k== 'blend':
-            return ' blend ' + str(self._variables.get(k,''))
-        elif k== 'opacity':
-            return ' opacity ' + str(self._variables.get(k,''))
-        elif k == 'duration':
+        elif self._value.__contains__(k):
             return ' ' + str(self._variables.get(k,''))
-        elif k == 'brightness':
-            return ' brightness ' + str(self._variables.get(k,''))
-        elif k == 'saturation':
-            return ' saturation ' + str(self._variables.get(k,''))
-        elif k == 'contrast':
-            return ' contrast ' + str(self._variables.get(k,''))
-        elif k == 'levels':
-            return ' levels ' + str(self._variables.get(k,''))
-        elif k == 'min_input':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'max_input':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'gamma':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'min_output':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'max_output':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'fill':
-            return ' fill ' + str(self._variables.get(k,''))
-        elif k == 'x':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'y':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'x_scale':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'y_scale':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'clip':
-            return ' clip ' + str(self._variables.get(k,''))
-        elif k == 'width':
-            return ' ' +str(self._variables.get(k,''))
-        elif k == 'height':
-            return ' ' +str(self._variables.get(k,''))
-        elif k == 'anchor':
-            return ' anchor ' + str(self._variables.get(k,''))
-        elif k == 'crop':
-            return ' crop ' + str(self._variables.get(k,''))
-        elif k == 'left_edge':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'right_edge':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'top_edge':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'bottom_edge':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'rotation':
-            return ' rotation ' + str(self._variables.get(k,''))
-        elif k == 'angle':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'perspective':
-            return ' perspective ' + str(self._variables.get(k,''))
-        elif k == 'top_left_x':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'top_left_y':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'top_right_x':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'top_right_y':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'bottom_left_x':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'bottom_left_y':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'bottom_right_x':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'bottom_right_y':
-            return ' ' + str(self._variables.get(k,''))
-        elif k == 'mipmap':
-            return ' mipmap ' +str(self._variables.get(k,''))
-        elif k == 'volume':
-            return ' volume ' + str(self._variables.get(k,''))
-        elif k == 'mastervolume':
-            return ' mastervolume ' + str(self._variables.get(k,''))
-        elif k == 'straightalphaoutput':
-            return ' straight_alpha_output ' + str(self._variables.get(k,''))
-        elif k == 'grid':
-            return ' grid ' + str(self._variables.get(k,''))
-        else:
-            return self._variables.get(k,'')
-        
+        else:# self._variables.__contains__(k):
+            return ' ' + k + ' ' + str(self._variables.get(k,''))
+    
     def get_string(self, s):
         if s == 'color' and (self._variables.get(s) in self._color):
             if self._variables.get("spill") == None:
@@ -372,8 +287,8 @@ class CasparMixerCommands:
     def mixerMastervolume(self):
         return "mixer " + str(self.channel_layer()) + str(self.get_variable('mastervolume'))#brak DEFER!!
     
-    def mixerStraightalphaoutput(self):
-        return "mixer " + str(self.channel_layer()) + str(self.get_variable('straightalphaoutput'))#brak DEFER!!
+    def mixerStraight_alpha_output(self):
+        return "mixer " + str(self.channel_layer()) + str(self.get_variable('straight_alpha_output'))#brak DEFER!!
     
     def mixerGrid(self):
         return "mixer " + str(self.channel_layer()) + str(self.get_variable('grid')) + str(self.get_variable('duration')) #brak tweena! #brak DEFER!!
@@ -458,20 +373,3 @@ class CasparQueryCommands:
     def help(self):
         return "help " + str(self.optional_arg())
         
-#######################################################        
-class Caspar2:
-    def __init__(self):
-        pass
-    
-    def command(self, _filename,  _channel, _layer = None):
-        if _layer == None:
-            #return 'play ' + str(_channel) + ' ' + _filename
-            return self.get_function_name() +' ' + str(_channel) + ' ' + _filename
-        else:
-            return self.get_function_name() +' ' + str(_channel) + '-' + str(_layer) + ' ' + _filename
-        
-    def get_function_name(self):
-        # for current func name, specify 0 or no argument.
-        # for name of caller of current func, specify 1.
-        # for name of caller of caller of current func, specify 2. etc.
-        return sys._getframe(1).f_code.co_name
